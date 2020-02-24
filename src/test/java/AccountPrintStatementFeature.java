@@ -1,5 +1,6 @@
 import ewansheldon.kata.bank_extended.BankAccount;
 import ewansheldon.kata.bank_extended.Console;
+import ewansheldon.kata.bank_extended.StatementPrinter;
 import ewansheldon.kata.bank_extended.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,8 @@ public class AccountPrintStatementFeature {
     @BeforeEach
     void setUp() {
         TransactionRepository transactionRepository = new TransactionRepository();
-        bankAccount = new BankAccount(transactionRepository);
+        StatementPrinter statementPrinter = new StatementPrinter();
+        bankAccount = new BankAccount(transactionRepository, statementPrinter);
     }
 
     @Test
