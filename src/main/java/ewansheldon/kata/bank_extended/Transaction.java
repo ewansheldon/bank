@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class Transaction {
     private int amount;
+    private String date;
 
     public Transaction(int amount) {
         this.amount = amount;
+        this.date = Clock.todayFormatted();
     }
 
     @Override
@@ -20,5 +22,13 @@ public class Transaction {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

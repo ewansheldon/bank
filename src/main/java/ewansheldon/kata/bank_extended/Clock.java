@@ -1,7 +1,7 @@
 package ewansheldon.kata.bank_extended;
 
-public class Console {
-    public void print(String s) {
+public class Clock {
+    public static String todayFormatted() {
         throw new UnsupportedOperationException();
     }
 }
