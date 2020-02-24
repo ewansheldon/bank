@@ -23,7 +23,7 @@ class BankAccountShould {
     }
 
     @Test
-    void should_add_deposit_to_transaction_repository() {
+    void add_deposit_to_transaction_repository() {
         int amount = 1000;
 
         bankAccount.deposit(amount);
@@ -31,7 +31,7 @@ class BankAccountShould {
     }
 
     @Test
-    void should_add_withdrawal_to_transaction_repository() {
+    void add_withdrawal_to_transaction_repository() {
         int amount = 1000;
 
         bankAccount.withdraw(amount);
@@ -39,7 +39,7 @@ class BankAccountShould {
     }
 
     @Test
-    void should_send_transactions_to_print_statement() {
+    void send_transactions_to_print_statement() {
         List<Transaction> transactions = createTransactions(500, -100);
         given(transactionRepository.getAll()).willReturn(transactions);
         bankAccount.printStatement();

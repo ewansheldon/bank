@@ -10,7 +10,7 @@ class TransactionRepositoryShould {
     private TransactionRepository transactionRepository = new TransactionRepository();
 
     @Test
-    void should_create_transaction_and_store() {
+    void create_transaction_and_store() {
         Transaction transaction = new Transaction(1000);
         transactionRepository.addTransaction(1000);
         List<Transaction> transactions = transactionRepository.getAll();
