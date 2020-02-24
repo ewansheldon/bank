@@ -1,5 +1,7 @@
 package ewansheldon.kata.bank_extended;
 
+import java.util.Map;
+
 public class BankAccount {
     private TransactionRepository transactionRepository;
     private StatementPrinter statementPrinter;
@@ -19,5 +21,14 @@ public class BankAccount {
 
     public void printStatement() {
         statementPrinter.print(transactionRepository.getAll());
+    }
+
+    public void printStatement(Map<String, String> filter) {
+        statementPrinter.print(transactionRepository.getAll());
+    }
+
+    public void transfer(int amount, BankAccount otherAccount) {
+        this.withdraw(amount);
+        otherAccount.deposit(amount);
     }
 }

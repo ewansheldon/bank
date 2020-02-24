@@ -6,7 +6,7 @@ import java.util.List;
 public class StatementPrinter {
     public static final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
     public static final String STATEMENT_FORMAT = "%s | %s | %s";
-    public static final String MONEY_FORMAT = "#.00";
+    public static final String MONEY_FORMAT = "0.00";
     private Console console;
     private int balance;
 

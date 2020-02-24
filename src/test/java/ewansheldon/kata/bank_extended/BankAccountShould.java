@@ -47,6 +47,16 @@ class BankAccountShould {
         verify(statementPrinter).print(transactions);
     }
 
+    @Test
+    void transfer_to_another_account() {
+        TransactionRepository targetTransactionRepository = mock(TransactionRepository.class);
+        BankAccount targetAccount = new BankAccount(targetTransactionRepository, statementPrinter);
+        bankAccount.transfer(1000, targetAccount);
+
+        verify(transactionRepository).addTransaction(-1000);
+        verify(targetTransactionRepository).addTransaction(1000);
+    }
+
     private List<Transaction> createTransactions(int ...amounts) {
         List<Transaction> transactions = new ArrayList<>();
         for (int amount : amounts) {
