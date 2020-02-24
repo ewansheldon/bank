@@ -28,19 +28,20 @@ class StatementPrinterShould {
 
     @Test
     void print_given_transaction_with_amount_date_and_running_total() {
-        Transaction deposit = mock(Transaction.class);
-        given(deposit.getAmount()).willReturn(1000);
-        given(deposit.getDate()).willReturn("12/10/2019");
-
-        Transaction withdrawal = mock(Transaction.class);
-        given(withdrawal.getAmount()).willReturn(-300);
-        given(withdrawal.getDate()).willReturn("17/10/2019");
-
+        Transaction deposit = mockTransaction(1000, "12/10/2019");
+        Transaction withdrawal = mockTransaction(-300, "17/10/2019");
         List<Transaction> transactions = List.of(deposit, withdrawal);
 
         statementPrinter.print(transactions);
         verify(console).print("DATE | AMOUNT | BALANCE");
         verify(console).print("12/10/2019 | 1000 | 1000");
         verify(console).print("17/10/2019 | -300 | 700");
+    }
+
+    private Transaction mockTransaction(int amount, String date) {
+        Transaction transaction = mock(Transaction.class);
+        given(transaction.getAmount()).willReturn(amount);
+        given(transaction.getDate()).willReturn(date);
+        return transaction;
     }
 }
