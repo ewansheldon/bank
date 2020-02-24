@@ -5,13 +5,18 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 class TransactionRepositoryShould {
-    private TransactionRepository transactionRepository = new TransactionRepository();
+    private Clock clock = mock(Clock.class);
+    private TransactionRepository transactionRepository = new TransactionRepository(clock);
 
     @Test
     void create_transaction_and_store() {
-        Transaction transaction = new Transaction(1000);
+        String date = "01/01/2020";
+        Transaction transaction = new Transaction(1000, date);
+        given(clock.todayAsString()).willReturn(date);
         transactionRepository.addTransaction(1000);
         List<Transaction> transactions = transactionRepository.getAll();
 

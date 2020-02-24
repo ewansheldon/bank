@@ -6,9 +6,9 @@ public class Transaction {
     private int amount;
     private String date;
 
-    public Transaction(int amount) {
+    public Transaction(int amount, String date) {
         this.amount = amount;
-        this.date = Clock.todayFormatted();
+        this.date = date;
     }
 
     @Override

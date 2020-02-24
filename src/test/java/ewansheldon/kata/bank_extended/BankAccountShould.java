@@ -50,7 +50,7 @@ class BankAccountShould {
     private List<Transaction> createTransactions(int ...amounts) {
         List<Transaction> transactions = new ArrayList<>();
         for (int amount : amounts) {
-            transactions.add(new Transaction(amount));
+            transactions.add(new Transaction(amount, "02/02/2020"));
         }
 
         return transactions;

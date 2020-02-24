@@ -1,7 +1,4 @@
-import ewansheldon.kata.bank_extended.BankAccount;
-import ewansheldon.kata.bank_extended.Console;
-import ewansheldon.kata.bank_extended.StatementPrinter;
-import ewansheldon.kata.bank_extended.TransactionRepository;
+import ewansheldon.kata.bank_extended.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -11,11 +8,13 @@ import static org.mockito.Mockito.*;
 public class AccountPrintStatementFeature {
     private BankAccount bankAccount;
     private Console console;
+    private Clock clock;
 
     @BeforeEach
     void setUp() {
+        clock = new Clock();
         console = mock(Console.class);
-        TransactionRepository transactionRepository = new TransactionRepository();
+        TransactionRepository transactionRepository = new TransactionRepository(clock);
         StatementPrinter statementPrinter = new StatementPrinter(console);
         bankAccount = new BankAccount(transactionRepository, statementPrinter);
     }

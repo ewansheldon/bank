@@ -34,8 +34,8 @@ class StatementPrinterShould {
 
         statementPrinter.print(transactions);
         verify(console).print("DATE | AMOUNT | BALANCE");
-        verify(console).print("12/10/2019 | 1000 | 1000");
-        verify(console).print("17/10/2019 | -300 | 700");
+        verify(console).print("12/10/2019 | 1000.00 | 1000.00");
+        verify(console).print("17/10/2019 | -300.00 | 700.00");
     }
 
     private Transaction mockTransaction(int amount, String date) {
